@@ -22,11 +22,13 @@
                 </li>
 
                 <!-- Jika pengguna belum login -->
+                <!-- Jika pengguna belum login -->
                 @guest
                 <li class="nav-item">
-                    <a class="btn btn-outline-light ms-3" href="{{ route('user.login') }}">Masuk</a>
+                    <a class="btn btn-outline-light ms-3 w-100 text-center mt-2 mt-lg-0" href="{{ route('user.login') }}">Masuk</a>
                 </li>
                 @endguest
+
 
                 <!-- Jika pengguna sudah login -->
                 @auth
