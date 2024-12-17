@@ -65,7 +65,18 @@
                         <label for="nama_produk" class="form-label">Nama Produk</label>
                         <input type="text" name="nama_produk" class="form-control" id="nama_produk" value="{{ $product->nama_produk }}" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="kategori_produk" class="form-label">Kategori Produk</label>
+                        <div class="input-group">
+                            <select name="kategori_produk" class="form-control" id="kategori_produk" required>
+                                <option value="">Pilih Kategori</option>
+                                @foreach($kategories as $kategori)
+                                <option value="{{ $kategori->nama_kategori }}">{{ $kategori->nama_kategori }}</option>
+                                @endforeach
+                            </select>
 
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="harga_produk" class="form-label">Harga Produk</label>
                         <input type="number" name="harga_produk" class="form-control" id="harga_produk" value="{{ $product->harga_produk }}" required>
@@ -107,6 +118,18 @@
                     <div class="form-group">
                         <label for="nama_produk">Nama Produk</label>
                         <input type="text" class="form-control" id="nama_produk" name="nama_produk" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="kategori_produk" class="form-label">Kategori Produk</label>
+                        <div class="input-group">
+                            <select name="kategori_produk" class="form-control" id="kategori_produk" required>
+                                <option value="">Pilih Kategori</option>
+                                @foreach($kategories as $kategori)
+                                <option value="{{ $kategori->nama_kategori }}">{{ $kategori->nama_kategori }}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="harga_produk">Harga</label>

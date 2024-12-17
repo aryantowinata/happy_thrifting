@@ -11,6 +11,7 @@
     <!-- Icon Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS (optional) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="/assets/css/login_admin.css" rel="stylesheet">
 
 </head>

@@ -8,28 +8,28 @@
             </div>
             <!-- Links -->
             <div class="col-lg-2 col-md-3 mb-4">
-                <h5 class="text-uppercase mb-3">Quick Links</h5>
+                <h5 class="text-uppercase mb-3">Tautan</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('index') }}" class="text-white text-decoration-none">Home</a></li>
-                    <li><a href="{{ route('product_page') }}" class="text-white text-decoration-none">Products</a></li>
-                    <li><a href="{{ route('about') }}" class="text-white text-decoration-none">About</a></li>
-                    <li><a href="{{ route('user.cart') }}" class="text-white text-decoration-none">Cart</a></li>
+                    <li><a href="{{ route('index') }}" class="text-white text-decoration-none">Beranda</a></li>
+                    <li><a href="{{ route('product_page') }}" class="text-white text-decoration-none">Produk</a></li>
+                    <li><a href="{{ route('about') }}" class="text-white text-decoration-none">Tentang Kami</a></li>
+                    <li><a href="{{ route('user.cart') }}" class="text-white text-decoration-none">Keranjang</a></li>
                 </ul>
             </div>
             <!-- Contact Info -->
             <div class="col-lg-3 col-md-6 mb-4">
-                <h5 class="text-uppercase mb-3">Contact Us</h5>
-                <p><i class="fas fa-map-marker-alt me-2"></i>Jl. Bathin Alam, Sungai Alam, Kec. Bengkalis, Kabupaten Bengkalis, Riau </p>
+                <h5 class="text-uppercase mb-3">Kontak Kami</h5>
+                <p><i class="fas fa-map-marker-alt me-2"></i>Jl. Lembaga Senggoro, Kec. Bengkalis, Kabupaten Bengkalis, Riau </p>
                 <p><i class="fas fa-envelope me-2"></i>admin@gmail.com</p>
-                <p><i class="fas fa-phone me-2"></i>0822-8755-4320</p>
+                <p><i class="fas fa-phone me-2"></i>0822-8806-5648</p>
             </div>
             <!-- Social Media -->
             <div class="col-lg-3 col-md-6 mb-4">
-                <h5 class="text-uppercase mb-3">Follow Us</h5>
-                <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-linkedin-in"></i></a>
+                <h5 class="text-uppercase mb-3">Ikuti Kami</h5>
+                <a href="https://www.facebook.com/paulinaasiregar?mibextid=ZbWKwL" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/6282288065648" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/happy_thrifting.bks?igsh=YXRvM3VydHI5bmpp" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-instagram"></i></a>
+
             </div>
         </div>
         <hr class="mb-4">

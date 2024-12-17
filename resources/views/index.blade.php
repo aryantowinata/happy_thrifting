@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
+    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -27,8 +29,8 @@
     <section class="hero bg-primary text-white py-5" data-aos="fade-up">
         <div class="container">
             <div class="text-center">
-                <h1>Selamat Datang di E-Shop</h1>
-                <p class="lead">Temukan produk terbaik dengan harga yang tak tertandingi!</p>
+                <h1>Harga Hemat Gaya Keren!</h1>
+                <p class="lead">Selamat datang di Happy Thrifting, tempat dimana gaya dan harga bersahabat bertemu!</p>
                 <a href="{{ route('product_page') }}" class="btn btn-light btn-lg" data-aos="zoom-in" data-aos-delay="200">Belanja Sekarang</a>
             </div>
         </div>
@@ -100,6 +102,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="https://wa.me/6282375062833?text=Halo,%20saya%20mau%20bertanya!" class="btn btn-primary btn-lg" data-aos="zoom-in" data-aos-delay="400">Chat dengan kami</a>
             </div>
         </div>
     </section>

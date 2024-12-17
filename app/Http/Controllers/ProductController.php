@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,27 +12,36 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('admin.products', compact('products'));
+        $kategories = Kategori::all();
+        $products = Product::with('kategori')->get();
+        return view('admin.products', compact('products', 'kategories'));
     }
 
     public function store(Request $request)
     {
-        // Validasi data
+        // Validasi form input
         $request->validate([
             'nama_produk' => 'required|string|max:255',
+            'kategori_produk' => 'required|string', // Nama kategori dari form
             'harga_produk' => 'required|numeric',
             'jumlah_produk' => 'required|numeric',
-            'gambar_produk' => 'required|image|max:2048', // Max 2MB
+            'gambar_produk' => 'required|image|max:2048',
         ]);
+
+        // Cari ID kategori berdasarkan nama
+        $kategori = Kategori::where('nama_kategori', $request->kategori_produk)->first();
+        if (!$kategori) {
+            return redirect()->back()->with('error', 'Kategori tidak ditemukan.');
+        }
 
         // Simpan file gambar ke storage
         $path = $request->file('gambar_produk')->store('products', 'public');
 
         // Buat produk baru
         Product::create([
-            'id_user' => Auth::id(), // Ambil ID user saat ini
+            'id_user' => Auth::id(),
             'nama_produk' => $request->nama_produk,
+            'id_kategori' => $kategori->id, // Simpan ID kategori
             'harga_produk' => $request->harga_produk,
             'jumlah_produk' => $request->jumlah_produk,
             'gambar_produk' => $path,
@@ -40,32 +50,35 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
-
     public function update(Request $request, Product $product)
     {
-        // Validasi data
+        // Validasi input
         $request->validate([
             'nama_produk' => 'required|string|max:255',
+            'kategori_produk' => 'required|string', // Nama kategori dari form
             'harga_produk' => 'required|numeric',
             'jumlah_produk' => 'required|numeric',
-            'gambar_produk' => 'nullable|image|max:2048', // Opsional jika gambar tidak diubah
+            'gambar_produk' => 'nullable|image|max:2048',
         ]);
 
-        // Jika gambar diupload, hapus gambar lama dan simpan yang baru
+        // Cari ID kategori berdasarkan nama
+        $kategori = Kategori::where('nama_kategori', $request->kategori_produk)->first();
+        if (!$kategori) {
+            return redirect()->back()->with('error', 'Kategori tidak ditemukan.');
+        }
+
+        // Update gambar jika ada
         if ($request->hasFile('gambar_produk')) {
-            // Hapus gambar lama jika ada
             if ($product->gambar_produk && Storage::exists('public/' . $product->gambar_produk)) {
                 Storage::delete('public/' . $product->gambar_produk);
             }
-
-            // Simpan gambar baru
-            $path = $request->file('gambar_produk')->store('products', 'public');
-            $product->gambar_produk = $path;
+            $product->gambar_produk = $request->file('gambar_produk')->store('products', 'public');
         }
 
-        // Perbarui data produk
+        // Update produk
         $product->update([
             'nama_produk' => $request->nama_produk,
+            'id_kategori' => $kategori->id, // Simpan ID kategori
             'harga_produk' => $request->harga_produk,
             'jumlah_produk' => $request->jumlah_produk,
             'gambar_produk' => $product->gambar_produk,
@@ -73,6 +86,7 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Produk berhasil diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.
