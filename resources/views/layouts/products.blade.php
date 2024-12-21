@@ -15,13 +15,17 @@
                         </a>
                     </div>
                     <!-- Looping kategori -->
+                    @php
+                    $currentRoute = Route::currentRouteName(); // Mendapatkan nama rute aktif
+                    @endphp
                     @foreach($categories as $category)
                     <div class="col-md-3 col-sm-6 mb-1">
-                        <a href="{{ route('index', ['kategori' => $category->id]) }}" class="category-card text-center text-decoration-none">
+                        <a href="{{ route($currentRoute, ['kategori' => $category->id]) }}" class="category-card text-center text-decoration-none">
                             <h6 class="category-name">{{ $category->nama_kategori }}</h6>
                         </a>
                     </div>
                     @endforeach
+
                 </div>
             </div>
         </div>

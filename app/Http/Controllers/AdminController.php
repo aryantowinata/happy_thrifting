@@ -18,11 +18,13 @@ class AdminController extends Controller
         // Hitung jumlah user dengan role 'user'
         $userCount = User::where('role', 'user')->count();
 
+        $orderCount = Order::count();
+
         // Hitung total profit berdasarkan total_harga dari order yang statusnya 'completed'
         $totalProfit = Order::where('status', 'completed')->sum('total_harga');
 
         // Kirim data ke view dashboard
-        return view('admin.dashboard', compact('productCount', 'userCount', 'totalProfit'));
+        return view('admin.dashboard', compact('productCount', 'userCount', 'totalProfit', 'orderCount'));
     }
 
 
