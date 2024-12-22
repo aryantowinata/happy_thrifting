@@ -85,6 +85,8 @@ class CartController extends Controller
         $product->jumlah_produk -= 1;
         $product->save();
 
+        $orderId = $order->id . '-' . time();
+
         // Konfigurasi Midtrans
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         Config::$clientKey = env('MIDTRANS_CLIENT_KEY');
@@ -92,7 +94,7 @@ class CartController extends Controller
 
         // Persiapkan data untuk Midtrans
         $transactionDetails = [
-            'order_id' => $order->id,
+            'order_id' => $orderId,
             'gross_amount' => $total_harga,
         ];
 
